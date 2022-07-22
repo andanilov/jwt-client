@@ -19,7 +19,7 @@ const App = () => {
     return <h1>Загрузка ...</h1>;
   }
 
-  if (isAuth && user && !user.isActivated) {
+  if (isAuth && user && !user.isactivated) {
     return <h2>Активируйтесь через почту!</h2>;
   }
 
@@ -28,13 +28,13 @@ const App = () => {
       <div>
         <h1>Привет {user.name}</h1>
         <div>Email: {user.email}</div>
-        <div>Активация: {user.isActivated ? 'да' : 'нет'}</div>
+        <div>Активация: {user.isactivated ? 'да' : 'нет'}</div>
         <div><button onClick={async () => setUsers(await getUsers())}>Получить пользователей (закрытые данные)!</button></div>
         <div><button onClick={logout}>Выйти</button></div>
         { users?.length && (
           <div>
             <h2>Пользователи</h2>
-            { users.map(({ email, name, isActivated }) => <div key={email}>{email} / {name} / {isActivated ? 'Активирован' : 'не активирован'}</div>)}
+            { users.map(({ email, name, isactivated }) => <div key={email}>{email} / {name} / {isactivated ? 'Активирован' : 'не активирован'}</div>)}
           </div>
           )
         }

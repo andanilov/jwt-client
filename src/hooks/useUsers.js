@@ -1,4 +1,3 @@
-// import config from '../config';
 import { useDispatch } from 'react-redux';
 import UserService from '../services/UserService';
 import { setLoading } from '../store/userSlice';

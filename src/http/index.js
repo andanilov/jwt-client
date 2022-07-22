@@ -1,6 +1,6 @@
 // Axios preference
 import axios from 'axios';
-import config from '../config';
+import config from '../conf';
 import AuthService from '../services/AuthService';
 
 // export const API_URL = 'http://localhost:5000/api';
