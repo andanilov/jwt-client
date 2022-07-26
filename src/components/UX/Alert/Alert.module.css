@@ -1,0 +1,15 @@
+.alert {
+    padding: 1em;
+    border: 1px solid;
+    border-left: 0.3em solid;
+
+    background-color: #f4f4f5;
+    color: #52525b;
+    border-color: #e4e4e7;
+}
+
+.error {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border-color: #fecaca;
+}

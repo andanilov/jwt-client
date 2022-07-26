@@ -1,6 +1,6 @@
 import AuthService from '../services/AuthService';
 import { useDispatch } from 'react-redux';
-import { setAuth, setUser, setLoading } from '../store/userSlice';
+import { setAuth, setUser, setLoading, setAuthError, setAuthMessage, setPopUpAuthType } from '../store/userSlice';
 
 export function useAuth() {
   const dispatch = useDispatch();
@@ -17,8 +17,11 @@ export function useAuth() {
       // 3. Set user info to global state
       dispatch(setAuth({ isAuth: true }));
       dispatch(setUser({ user: response.data.user }));
+
+      // 4. Clear and close form data
+      _formData({ err: '', msg: '', type: '' });
     } catch (e) {
-      console.log(e.response?.data?.message);
+      dispatch(setAuthError(e.response?.data?.error));
     }
   };
 
@@ -34,8 +37,42 @@ export function useAuth() {
       // 3. Set user info to global state
       dispatch(setAuth({ isAuth: true }));
       dispatch(setUser({ user: response.data.user }));
+      
+      // 4. Message output
+      _formData({ err: '', type: 'log', msg: `
+        Благодарим за регистрацию!\n
+        На Ваш Email ${email} было отправлено письмо\n
+        с ссылкой на подтверждение Вашего аккаунта!
+      `});      
     } catch (e) {
-      console.log(e.response?.data?.message);
+      dispatch(setAuthError(e.response?.data?.error));
+    }
+  };
+
+  const remember = async (email) => {
+    try {
+      const response = await AuthService.remember(email);
+      console.log('reset: ', response);
+
+    //   // 1. Register in server by AuthService
+    //   const response = await AuthService.remember(email);
+    //   console.log('registration: ', response);
+
+    //   // 2. Set the token from server to localStorage
+    //   response.data.accessToken && localStorage.setItem('token', response.data.accessToken);
+
+    //   // 3. Set user info to global state
+    //   dispatch(setAuth({ isAuth: true }));
+    //   dispatch(setUser({ user: response.data.user }));
+      
+    //   // 4. Message output
+    //   _formData({ err: '', msg: `
+    //     Благодарим за регистрацию!\n
+    //     На Ваш Email ${email} было отправлено письмо\n
+    //     с ссылкой на подтверждение Вашего аккаунта!
+    //   `});      
+    } catch (e) {
+      dispatch(setAuthError(e.response?.data?.error));
     }
   };
 
@@ -52,10 +89,12 @@ export function useAuth() {
       dispatch(setAuth({ isAuth: false }));
       dispatch(setUser({ user: {} }));
 
+      // 4. Clear and close form data
+      _formData({ err: '', msg: '', type: '' });
     } catch (e) {
       console.log(e.response?.data?.message);
     }
-  }
+  };
 
   const checkAuth = async () => {
     try {      
@@ -63,11 +102,8 @@ export function useAuth() {
       dispatch(setLoading({ isLoading: true }));
 
       // 1. Get pair accesToken and RefreshToken
-      // const response = await axios.get(`${config.API_URL}/user/refresh`, {
-      //   withCredentials: true, // automatically send cookie with request
-      // });
       const response = await AuthService.refresh();
-      console.log('checkAuth: ', response);
+      // console.log('checkAuth: ', response);
 
       // 2. Set accessToken and update user info
       // response.data.accessToken && localStorage.setItem('token', response.data.accessToken);
@@ -79,7 +115,13 @@ export function useAuth() {
       // Delete loading
       dispatch(setLoading({ isLoading: false }));
     }
-  }
+  };
 
-  return { registration, login, logout, checkAuth }
+  const _formData = ({ err, msg, type }) => {    
+    dispatch(setPopUpAuthType(type));
+    dispatch(setAuthError(err));
+    dispatch(setAuthMessage(msg));
+  };
+
+  return { registration, login, logout, checkAuth, remember }
 }

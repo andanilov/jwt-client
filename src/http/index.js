@@ -14,7 +14,7 @@ const api = axios.create({
 // 1. For request - add authorization token to request header
 api.interceptors.request.use((config) => { // config like axios config
 // Put token from localStorage to request header
-  config.headers.Authorization = `Bearer ${localStorage.getItem('token') ?? ''}`;
+  config.headers.Authorization = `Bearer ${localStorage.getItem('token') ?? ''}`;  
   return config;
 });
 // .use(resolveCallback, rejectCallback);
@@ -24,7 +24,7 @@ api.interceptors.response.use((config) => config,
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response.status == 401 && error.config && !error.config._isRetry) {
+    if (error.response.status === 401 && error.config && !error.config._isRetry) {
       originalRequest._isRetry = true;
       try {
         // 1. Request to refresh tokens and save access token ti localStorage
@@ -37,6 +37,7 @@ api.interceptors.response.use((config) => config,
       }
     }
     throw error;
+    // throw error;
   }
 );
 

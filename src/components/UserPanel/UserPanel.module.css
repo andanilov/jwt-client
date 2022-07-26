@@ -1,0 +1,9 @@
+.form nav {
+    display: grid;
+    gap: .3em;
+}
+
+.form nav div {
+    text-align: center;
+}
+
