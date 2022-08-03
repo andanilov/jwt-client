@@ -7,8 +7,12 @@ const UserAuthMenu = () => {
 
   return (
     <>
-      <a href='#' onClick={() => dispatch(setPopUpAuthType('log'))}>Вход</a>&nbsp;
-      <a href='#' onClick={() => dispatch(setPopUpAuthType('reg'))}>Регистрация</a>
+      <a href='#' title='Войти' onClick={() => dispatch(setPopUpAuthType('log'))}>
+        <span className="material-icons">login</span>
+      </a>
+      <a href='#' title='Регистрация' onClick={() => dispatch(setPopUpAuthType('reg'))}>
+        <span className="material-icons-outlined">person_add_alt</span>
+      </a> 
     </>);
 };
 

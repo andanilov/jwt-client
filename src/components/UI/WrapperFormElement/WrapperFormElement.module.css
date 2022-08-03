@@ -1,0 +1,25 @@
+
+.area {
+    display: flex;
+    flex-flow: column;
+}
+
+.area > * {
+    margin: 0 10px;
+}
+
+
+.area label {
+    font-weight: 400;
+    margin-bottom: .5em;
+}
+
+.area.required label {    
+    font-weight: 600;
+}
+
+.area span {
+    font-size: .8em;
+    margin-top: .8em;
+    opacity: .7;
+}

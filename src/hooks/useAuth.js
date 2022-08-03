@@ -9,7 +9,6 @@ export function useAuth() {
     try {
       // 1. Login in server by AuthService
       const response = await AuthService.login(email, password);
-      console.log('login: ', response);
 
       // 2. Set the token from server to localStorage
       response.data.accessToken && localStorage.setItem('token', response.data.accessToken);
@@ -29,7 +28,6 @@ export function useAuth() {
     try {
       // 1. Register in server by AuthService
       const response = await AuthService.registration(email, password, name);
-      console.log('registration: ', response);
 
       // 2. Set the token from server to localStorage
       response.data.accessToken && localStorage.setItem('token', response.data.accessToken);
@@ -52,25 +50,6 @@ export function useAuth() {
   const remember = async (email) => {
     try {
       const response = await AuthService.remember(email);
-      console.log('reset: ', response);
-
-    //   // 1. Register in server by AuthService
-    //   const response = await AuthService.remember(email);
-    //   console.log('registration: ', response);
-
-    //   // 2. Set the token from server to localStorage
-    //   response.data.accessToken && localStorage.setItem('token', response.data.accessToken);
-
-    //   // 3. Set user info to global state
-    //   dispatch(setAuth({ isAuth: true }));
-    //   dispatch(setUser({ user: response.data.user }));
-      
-    //   // 4. Message output
-    //   _formData({ err: '', msg: `
-    //     Благодарим за регистрацию!\n
-    //     На Ваш Email ${email} было отправлено письмо\n
-    //     с ссылкой на подтверждение Вашего аккаунта!
-    //   `});      
     } catch (e) {
       dispatch(setAuthError(e.response?.data?.error));
     }
@@ -80,7 +59,6 @@ export function useAuth() {
     try {
       // 1. Logout from server by Service
       const response = await AuthService.logout();
-      console.log('logout: ', response);
 
       // 2. Delete token from LocalStorage
       localStorage.removeItem('token');

@@ -1,8 +1,47 @@
+.body {
+    min-height: 100vh;
+    max-width: 1360px;
+    margin: 0 auto;
+    
+}
+
 .header {
     background-color: #f2f2f2;
     padding: 1em;
+    display: grid;
+    grid-template-columns: minmax(80px, 1fr) 4fr minmax(150px, 2fr);
+    text-align: center;
+    align-items: center;
+    gap: 1em;
 }
 
-.userPanel {
+.leftSide {
+    
+}
 
+.centerSide {
+
+}
+
+.rightSide {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: end;
+    gap: 0.5em;
+    align-items: center;
+}
+.rightSide a {
+    display: flex;
+    text-decoration: none;
+    color: grey;
+    transition: 1s;
+}
+
+.rightSide a:hover {
+    color: black;
+}
+
+
+.body > section {
+    padding-top: 1em;
 }

@@ -13,3 +13,9 @@
     color: #b91c1c;
     border-color: #fecaca;
 }
+
+.success {
+    background-color: #DCFCE7;
+    color: #047857;
+    border-color: #A7F3D0;
+}

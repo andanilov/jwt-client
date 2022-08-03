@@ -14,11 +14,10 @@ const UserPanel = () => {
   return user && Object.keys(user)?.length
     ? <UserMenu/>
     : (
-      <div>
-        !!! - {popUpAuthType}
+      <>
         <UserAuthMenu/>
-        { popUpAuthType && <UserAuthForms/> }
-      </div>);
+        {popUpAuthType && <UserAuthForms/>}
+      </>);
 }
 
 export default UserPanel;

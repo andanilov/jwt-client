@@ -8,6 +8,11 @@
     font-size: 1.1em;
 }
 
+.button:disabled {
+    opacity: .8;
+    cursor: text;
+}
+
 .success { background: linear-gradient(#79ba14, #82cb15); }
 .success:hover { background: linear-gradient(#6eb30e, #8ad120); }
 
@@ -29,5 +34,9 @@
 }
 
 .info {
-    background-color: grey;
+    background: linear-gradient(grey, rgb(147, 147, 147));
+}
+
+.info:hover {
+    background: linear-gradient(rgb(147, 147, 147), grey);
 }

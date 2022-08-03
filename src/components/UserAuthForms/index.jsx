@@ -4,10 +4,10 @@ import { setPopUpAuthType, setAuthError, setAuthMessage } from '../../store/user
 import classes from './UserAuthForms.module.css';
 import { useAuth } from '../../hooks/useAuth';
 
-import PopUpPanel from '../UX/PopUpPanel';
-import Input from '../UX/Input';
-import Button from '../UX/Button';
-import Alert from '../UX/Alert';
+import PopUpPanel from '../UI/PopUpPanel';
+import Input from '../UI/Input';
+import Button from '../UI/Button';
+import Alert from '../UI/Alert';
 
 const titles = {
   'log': { title: 'Авторизация', btn: 'Войти' },

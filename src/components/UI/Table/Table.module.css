@@ -1,0 +1,55 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    border-bottom: 1px solid #ccc;    
+    padding-bottom: 0.5em;
+}
+
+.table th::after {
+    font-size: .8em;
+    margin-left: 0.4em;
+}
+
+.table th.asc::after {
+    content: '▲';
+}
+
+.table th.desc::after {
+    content: '▼';
+}
+
+.table th.asc {
+
+}
+
+.table th.desc {
+
+}
+
+.table th.btn {
+    cursor: pointer;
+}
+
+.table td button {
+    font-size: .85em;
+}
+
+.table td {
+    padding: .5em;
+    text-align: center;
+}
+
+.table tr:nth-child(odd) td {
+    background-color: #f2f2f2;
+}
+
+.table td.left {
+    text-align: left;
+}
+
+.table td.right {
+    text-align: right;
+}
