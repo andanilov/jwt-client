@@ -1,0 +1,13 @@
+.select {
+    padding: 0.5em 0.4em;
+    font-size: 1em;
+    border: 1px solid #ccc;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.center {
+    text-align: center;
+}

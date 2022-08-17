@@ -1,35 +1,39 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import Alert from '../../components/UI/Alert';
-import Button from '../../components/UI/Button';
+import { useAlert } from '../../components/UI/Alert/AlertContext';
+// import Button from '../../components/UI/Button';
+import SmartButton from '../../components/UI/SmartButton';
 import Form from '../../components/UI/Form';
+import Header from '../../components/UI/Header';
 import Input from '../../components/UI/Input';
+import Space from '../../components/UI/Space';
+import TextBlock from '../../components/UI/TextBlock';
 import WrapperFormElement from '../../components/UI/WrapperFormElement';
 import Wrapper from '../../components/Wrapper';
+
 import { useUsers } from '../../hooks/useUsers';
 
 const UserConfig = () => {
   const user = useSelector((state) => state.user.user);
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
-  const [messages, setMessages] = useState([]);
 
+  const { alertBind, setAlert } = useAlert();
   const { changeUserData } = useUsers();
 
   const inputPassword = (event) => setPassword(event.target.value.trim());
 
   const goToChangeData = async (event) => {
     // 1. Clear errors and messages
-    setErrors((prevState) => []);
-    setMessages((prevState) => []);
+    setAlert();
 
     // 2. Get form rows
     const { name, newPassword, newPassword2 } = event.target.form;
 
     // 3. If new passwords exist and different
     if (newPassword.value.trim() !== newPassword2.value.trim()) {
-      return setErrors((prevState) => [...prevState, 'Новые пароли не совпадают!']);      
+      return setAlert('Новые пароли не совпадают!', 'error');
     }
 
     // 4. Send request to change data
@@ -39,7 +43,7 @@ const UserConfig = () => {
       password,
       name: name.value,
       newPassword: newPassword.value,
-    }, setErrors, setMessages);
+    });
 
     // 5. Reset password
     setPassword('');
@@ -48,9 +52,10 @@ const UserConfig = () => {
   return (
     <Wrapper>
       <div>
-        {!!errors.length && <Alert type="error">{errors.join('\n')}</Alert>}
-        {!!messages.length && <Alert type="success">{messages.join('\n')}</Alert>}
-        <h2>Личная информация</h2>
+        <Header>Личная информация</Header>
+        <TextBlock>Здесь Вы сможете изменить личную информацию и данные для доступа в систему. Для применения изменений необходимо ввести текущий пароль!</TextBlock>
+        <Alert {...alertBind} />
+        <Space />
         {user?.email &&
           <Form>          
             <WrapperFormElement
@@ -90,17 +95,17 @@ const UserConfig = () => {
                 name="password"
                 type="password"
                 value={password}
-                fnChange={inputPassword}
+                onChange={inputPassword}
               />
             </WrapperFormElement>
 
             <WrapperFormElement>
-              <Button
+              <SmartButton
                 disabled={!!!password.length}
                 onClick={goToChangeData}
               >
                 Изменить
-              </Button>
+              </SmartButton>
             </WrapperFormElement>
 
           </Form>

@@ -2,18 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './Alert.module.css';
 
-const Alert = ({ children, type }) => (
+const icon = {
+  'info': 'notification_important',
+  'error': 'do_not_disturb',
+  'success': 'check_circle_outline',
+};
+
+const Alert = ({ children, type }) => !!children && (
   <div className={`${classes[type]} ${classes.alert}`}>
-    {children}
-  </div>
-);
+    {!!icon[type] && <span className="material-icons-outlined">{icon[type]}</span>}
+    <div>
+      {children}
+    </div>
+  </div>);
 
 Alert.propTypes = {
   type: PropTypes.string,
 };
 
 Alert.defaultProps = {
-  type: '',
+  type: 'info',
 };
 
 export default Alert;

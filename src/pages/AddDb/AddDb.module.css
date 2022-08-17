@@ -1,0 +1,12 @@
+.tableParams {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableParams th {
+    border: 1px solid grey;
+}
+
+.tableParams th:first-child {
+    border: 1px solid grey;
+}

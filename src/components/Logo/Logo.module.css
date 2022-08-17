@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@700&family=Jost:wght@500&family=PT+Sans:wght@700&display=swap');
+
+.logo, .logo:hover {
+    font-family: 'Jost', sans-serif;
+    color: #1965a3;
+    font-weight: 600;
+    font-size: 2em;
+    border-bottom: 5px solid transparent;
+    text-decoration: none;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    position: relative;
+    top: 5px;
+}
+
+.logo span {
+    font-weight: normal;
+    font-size: .8em;
+}
+
+.logo.active {
+    border-bottom-color: #1965a3;
+}

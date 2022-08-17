@@ -10,7 +10,7 @@
 
 .button:disabled {
     opacity: .8;
-    cursor: text;
+    cursor: not-allowed;
 }
 
 .success { background: linear-gradient(#79ba14, #82cb15); }
@@ -18,8 +18,6 @@
 
 .error { background: linear-gradient(#ef4444, #f87171); }
 .error:hover { background: linear-gradient(#f87171, #ef4444); }
-
-
 
 .link { 
     background: transparent;
@@ -39,4 +37,9 @@
 
 .info:hover {
     background: linear-gradient(rgb(147, 147, 147), grey);
+}
+
+.center {
+    display: block;
+    margin: 0 auto;
 }

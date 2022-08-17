@@ -42,7 +42,7 @@ const UserAuthForms = () => {
         isShowState={!!popUpAuthType}
         onClose={goToForm('')}
       >
-        { authMessage && <Alert>{authMessage}</Alert>}
+        { authMessage && <Alert type="success">{authMessage}</Alert>}
         { authError && <Alert type="error">{authError}</Alert>}
 
         <Input 

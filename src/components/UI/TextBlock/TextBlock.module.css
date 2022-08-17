@@ -1,0 +1,23 @@
+.textBlock {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+    letter-spacing: .03em;
+    line-height: 1.7em;
+}
+
+.header .s1 {
+    font-size: 2em;
+    padding: 0.2em 0 0.6em;
+    margin: 0.3em 0 0.7em;
+    border-bottom: 1px solid #ccc;
+}
+
+.header .center {
+    text-align: center;
+}
+
+.header .left {
+    text-align: left;
+}

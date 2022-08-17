@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-import config from '../../conf';
 import { useAuth } from '../../hooks/useAuth';
+
+import Access from '../Access';
 
 const UserMenu = () => {
   const user = useSelector((state) => state.user.user);
@@ -12,10 +12,11 @@ const UserMenu = () => {
   return (
     <>
       {user.name ?? user.email}
-      {!!(user.access && user.access >= config.ADMIN_ACCESS) && 
-        <Link to="/user/list"><span className="material-icons-outlined">people_alt</span></Link>
-      }
-      <Link to="/user/config"><span className="material-icons-outlined">account_circle</span></Link>
+      <Access>
+        <Link to="/user/config">
+          <span className="material-icons-outlined">account_circle</span>
+        </Link>
+      </Access>      
       <a href='#' onClick={logout}><span className="material-icons">logout</span></a>
     </>);
 };

@@ -1,0 +1,116 @@
+.page {
+    display: grid;
+    font-family: 'PTSansNormal';
+    width: 210px;
+    height: 297px;
+    border: 5px solid transparent;
+    font-size: 4px;
+    box-sizing: border-box;
+    line-height: 1em;    
+    align-content: space-around;
+}
+
+.demo > .page, .redact > .page {
+    width: 932px;
+    height: 100%;
+    font-size: 1em;
+    background-color: #e5e5e5;
+    padding: 1em;
+    border-top: 10px dotted white;
+    margin: 0 auto;
+}
+.demo > .page div {
+    margin: .2em 0;
+}
+
+.page input, .page textarea {
+    border: none;
+    background-color: transparent;
+    font-size: 1em;   
+}
+
+h1, h2 {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    line-height: 1em;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.2em; }
+
+div { 
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.page > div > div {
+    height: fit-content;
+}
+
+
+.title {
+    /* width: 18%;     */
+    width: 10em;    
+    font-family: 'PTSansBold';
+}
+
+/* -- Demo mode -- */
+.demo > .page .bodyCol, .demo > .page .bodyId {
+    background-color: #3a9a3a;
+    color: white;
+    padding: 0.3em 0.6em 0.2em;
+    letter-spacing: .07em;
+    font-size: 1.2em;
+}
+.demo > .page .bodyId {
+    background-color: #f95151;
+}
+
+/* -- Redact mode -- */
+.redact > .page .bodyCol input, .redact > .page .bodyCol textarea  {
+    background-color: white;
+}
+.redact > .page .bodyCol, .redact > .page .bodyId {
+    border: 1px solid black;
+    padding: 0.2em 0.5em 0.2em;
+}
+
+div.options {
+    display: grid;
+}
+div.options > div {
+    display: flex;
+    padding: 0.3em 0;
+}
+
+div.col2 {
+    display: flex;
+}
+div.col2 > div {
+    width: 50%;
+}
+
+div.table table {
+    width: 100%;
+    border-collapse:collapse;
+    border: 0.5px solid black;
+    font-size: .8em;
+}
+div.table table th, div.table table td {
+    /* border: .1em solid grey;     */
+    padding: .3em;
+}
+
+div.table table th {
+    font-weight: 600;
+}
+div.table table td {
+    text-align: center;
+    border-top: .3px solid black;
+}
+
+.footer {
+    align-items: bottom;
+}

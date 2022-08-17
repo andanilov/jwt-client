@@ -14,7 +14,7 @@ const api = axios.create({
 // 1. For request - add authorization token to request header
 api.interceptors.request.use((config) => { // config like axios config
 // Put token from localStorage to request header
-  config.headers.Authorization = `Bearer ${localStorage.getItem('token') ?? ''}`;  
+  config.headers.Authorization = `Bearer ${localStorage.getItem('token') ?? ''}`;
   return config;
 });
 // .use(resolveCallback, rejectCallback);

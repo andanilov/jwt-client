@@ -3,4 +3,13 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
+    margin: 0;
+    padding: 0 0.5em;
+}
+
+a {
+    color: #1965a3;
+}
+a:hover {
+    color: black;
 }

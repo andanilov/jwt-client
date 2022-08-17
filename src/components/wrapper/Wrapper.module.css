@@ -1,18 +1,24 @@
 .body {
     min-height: 100vh;
     max-width: 1360px;
-    margin: 0 auto;
-    
+    margin: 0 auto;    
+    padding-bottom: 3em;
 }
 
 .header {
-    background-color: #f2f2f2;
-    padding: 1em;
     display: grid;
-    grid-template-columns: minmax(80px, 1fr) 4fr minmax(150px, 2fr);
+    grid-template-columns: minmax(90px, 1fr) 4fr minmax(160px, 1fr);
     text-align: center;
     align-items: center;
-    gap: 1em;
+    gap: 1.5em;
+    height: 5em;
+    border-bottom: 5px solid #f2f2f2;
+}
+
+.header > div {
+    display: flex;
+    justify-content: center;
+    height: 100%;
 }
 
 .leftSide {
@@ -20,14 +26,14 @@
 }
 
 .centerSide {
-
+    gap: 1em;
 }
 
 .rightSide {
     display: grid;
     grid-auto-flow: column;
     justify-content: end;
-    gap: 0.5em;
+    gap: 0.7em;
     align-items: center;
 }
 .rightSide a {
@@ -35,6 +41,9 @@
     text-decoration: none;
     color: grey;
     transition: 1s;
+}
+.rightSide a span {
+    font-size: 1.6em;
 }
 
 .rightSide a:hover {

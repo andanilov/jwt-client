@@ -1,8 +1,12 @@
 import React from 'react';
 import classes from './Form.module.css';
 
-const Form = ({ children }) => (
-  <form className={classes.form} onSubmit={(event) => event.preventDefault()}>
+const Form = ({ children, ...attr }) => (
+  <form
+    className={classes.form}
+    onSubmit={(event) => event.preventDefault()}
+    {...attr}
+  >
     {children}
   </form>
 );
