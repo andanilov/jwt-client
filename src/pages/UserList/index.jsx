@@ -25,7 +25,7 @@ const UserList = () => {
 
   const { alertBind, setAlert } = useAlert();
   useEffect(() => setAlert(), []);
-  
+
   const { getUsers, deleteUser, changeUserData } = useUsers();
 
   // --

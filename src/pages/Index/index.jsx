@@ -14,7 +14,7 @@ export default function() {
     <Wrapper>
       <Header>Добро пожаловать в {config.SERVICE_NAME} !</Header>
 
-      <Access rank={(access) => access < 1}>
+      <Access rank={(access) => access < 1} redirect={false}>
         <Alert>
           Благодарим за регистрацию в сервисе {config.SERVICE_NAME} !
           В ближайшее время Администратор подтвердит ваши права.<br/>

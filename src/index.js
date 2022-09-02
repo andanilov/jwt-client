@@ -4,15 +4,22 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-import 'material-icons/iconfont/material-icons.css';
+import AlertContext from './components/UI/Alert/AlertContext';
+import LoadingContext from './components/UI/Loading/LoadingContext';
 
+import 'material-icons/iconfont/material-icons.css';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>
+
+root.render(  
+  <Provider store={store}>
+    <LoadingContext>
+      <AlertContext>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+      </AlertContext>
+    </LoadingContext>
+  </Provider>
 );

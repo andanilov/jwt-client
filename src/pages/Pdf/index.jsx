@@ -60,7 +60,7 @@ export default function() {
             <Button 
               type="success"
               center={true}
-              onClick={generatePdfByDom(tplDom.current)}
+              onClick={() => generatePdfByDom(tplDom.current)}
             >
               Создать PDF
             </Button>

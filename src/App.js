@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 
@@ -7,31 +7,27 @@ import './App.css';
 import config from './conf';
 import Index from './pages/Index';
 import UserConfig from './pages/UserConfig';
-import RequireAuth from './components/RequireAuth';
 import UserList from './pages/UserList';
 import Pdf from './pages/Pdf';
-import AlertContext from './components/UI/Alert/AlertContext';
-import LoadingContext from './components/UI/Loading/LoadingContext';
 import AddDb from './pages/AddDb';
+import Access from './components/Access';
 
 const App = () => {
   const { checkAuth } = useAuth();
 
   // -- Check if user authorized now and set accesToken (Only for first run)
-  useEffect(() => { localStorage.getItem('token') && checkAuth(); }, []);
+  useEffect(() => { 
+    localStorage.getItem('token') && checkAuth();  
+  }, []);
 
   return (
-    <LoadingContext>
-      <AlertContext>
-        <Routes>     
-          <Route path="/pdf" element={<RequireAuth><Pdf /></RequireAuth>} />      
-          <Route path="/adddb" element={<RequireAuth><AddDb /></RequireAuth>} />      
-          <Route path="/user/config" element={<RequireAuth><UserConfig /></RequireAuth>} />      
-          <Route path="/user/list" element={<RequireAuth access={config.ADMIN_ACCESS}><UserList /></RequireAuth>} />
-          <Route path="/" element={<Index />} /> 
-        </Routes>
-      </AlertContext>
-    </LoadingContext>
+    <Routes>     
+      <Route path="/pdf" element={<Access><Pdf /></Access>} />      
+      <Route path="/adddb" element={<Access><AddDb /></Access>} />      
+      <Route path="/user/config" element={<Access><UserConfig /></Access>} />      
+      <Route path="/user/list" element={<Access rank={config.ADMIN_ACCESS}><UserList /></Access>} />
+      <Route path="/" element={<Index />} /> 
+    </Routes>
   );
 };
 
